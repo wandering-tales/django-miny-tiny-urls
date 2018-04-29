@@ -1,0 +1,5 @@
+[run]
+include = django_miny_tiny_url/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin

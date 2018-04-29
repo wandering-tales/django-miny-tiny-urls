@@ -1,0 +1,5 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_DB=django_miny_tiny_url
+POSTGRES_USER=xmNBaEthEZZRJgTpaMfLepucKxpvDTSA
+POSTGRES_PASSWORD=LEvzq7TcGUeodRSuD43ZIxEDOgZoNUooP7hs1JGwnirFvxUS9n48nxtVgDJrV67F
