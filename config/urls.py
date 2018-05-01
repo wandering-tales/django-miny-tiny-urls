@@ -20,7 +20,7 @@ urlpatterns = [
         include("django_miny_tiny_url.users.urls", namespace="users"),
     ),
     url(r"^accounts/", include("allauth.urls")),
-    # Your stuff: custom urls includes go here
+    url(r"^", include("url_shortener.urls")),
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )
