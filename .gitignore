@@ -339,6 +339,8 @@ pip-selfcheck.json
 
 django_miny_tiny_url/media/
 
+.pytest_cache/
+
 # Added to maintain local compose files which are ignored by something above.
 # See issue https://github.com/pydanny/cookiecutter-django/issues/1321
 !/compose/local/
