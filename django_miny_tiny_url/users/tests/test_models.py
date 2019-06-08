@@ -1,4 +1,9 @@
+import pytest
+
 from test_plus.test import TestCase
+
+
+pytestmark = pytest.mark.django_db
 
 
 class TestUser(TestCase):

@@ -1,6 +1,11 @@
+import pytest
+
 from django.urls import reverse, resolve
 
 from test_plus.test import TestCase
+
+
+pytestmark = pytest.mark.django_db
 
 
 class TestUserURLs(TestCase):
