@@ -1,6 +1,11 @@
+import pytest
+
 from test_plus.test import TestCase
 
 from ..admin import MyUserCreationForm
+
+
+pytestmark = pytest.mark.django_db
 
 
 class TestMyUserCreationForm(TestCase):

@@ -1,8 +1,13 @@
+import pytest
+
 from django.test import RequestFactory
 
 from test_plus.test import TestCase
 
 from ..views import (UserRedirectView, UserUpdateView)
+
+
+pytestmark = pytest.mark.django_db
 
 
 class BaseUserTestCase(TestCase):

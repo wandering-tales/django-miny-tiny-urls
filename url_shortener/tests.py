@@ -1,3 +1,5 @@
+import pytest
+
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -5,6 +7,9 @@ from rest_framework.test import APITestCase
 from url_shortener.baseconv import base10to62
 from url_shortener.models import ShortURL
 from url_shortener.serializers import ShortURLSerializer
+
+
+pytestmark = pytest.mark.django_db
 
 
 class ShortURLTests(APITestCase):
