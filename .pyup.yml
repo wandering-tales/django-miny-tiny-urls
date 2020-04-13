@@ -2,7 +2,7 @@ update: all
 pin: True
 branch: master
 schedule: "every week on saturday"
-search: True
+search: False
 
 requirements:
   - requirements/base.txt
