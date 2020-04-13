@@ -1,0 +1,13 @@
+update: all
+pin: True
+branch: master
+schedule: "every week on saturday"
+search: True
+
+requirements:
+  - requirements/base.txt
+  - requirements/local.txt
+  - requirements/production.txt
+
+branch_prefix: pyup-
+close_prs: True
