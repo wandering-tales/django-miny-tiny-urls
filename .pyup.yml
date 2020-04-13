@@ -1,7 +1,7 @@
 update: all
 pin: True
 branch: master
-schedule: "every week on saturday"
+schedule: "every day"
 search: False
 
 requirements:
