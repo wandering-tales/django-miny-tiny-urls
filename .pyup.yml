@@ -1,7 +1,6 @@
 update: all
 pin: True
 branch: master
-schedule: "every day"
 search: False
 
 requirements:
