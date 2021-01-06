@@ -16,6 +16,7 @@ jobs:
 
     - name: "Django Test"
       before_script:
+        - echo ${DOCKER_ACCESS_TOKEN} | docker login --username ${DOCKER_USERNAME} --password-stdin
         - docker-compose -v
         - docker -v
         - docker-compose -f local.yml build
