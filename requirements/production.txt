@@ -2,7 +2,7 @@
 
 -r base.txt
 
-gevent==20.6.2
+gevent==21.1.1
 gunicorn==20.0.4  # https://github.com/benoitc/gunicorn
 boto3==1.6.2  # pyup: update minor  # https://github.com/boto/boto3
 psycopg2==2.8.5 --no-binary psycopg2  # https://github.com/psycopg/psycopg2
