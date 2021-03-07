@@ -1,0 +1,42 @@
+name: Tests
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    env:
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2.3.4
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKER_ACCESS_TOKEN }}" | docker login --username "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Check docker-compose version
+        run: docker-compose -v
+
+      - name: Check docker version
+        run: docker -v
+
+      - name: Build docker-compose stack
+        run: docker-compose -f github-actions-ci.yml build
+
+      - name: Run Django database migration
+        # Ensure celerybeat does not crash due to non-existent tables
+        run: docker-compose -f github-actions-ci.yml run --rm django python manage.py migrate
+
+      - name: Start docker-compose stack
+        run: docker-compose -f github-actions-ci.yml up -d
+
+      - name: Run pytest on Django container
+        run: docker-compose -f github-actions-ci.yml run django pytest
+
+      - name: Print docker-compose stack logs on job failure
+        if: ${{ failure() }}
+        run: docker-compose -f github-actions-ci.yml logs

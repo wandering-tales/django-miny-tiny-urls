@@ -1,0 +1,36 @@
+version: '2'
+
+volumes:
+  postgres_data_local: {}
+  postgres_backup_local: {}
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/ci/django/Dockerfile
+    image: django_miny_tiny_url_ci_django
+    depends_on:
+      - postgres
+    environment:
+      - USE_DOCKER=yes
+      - REDIS_URL=redis://redis:6379/0
+      - POSTGRES_DB=django_miny_tiny_url
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    ports:
+      - "8000:8000"
+    command: /start.sh
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: django_miny_tiny_url_production_postgres
+    volumes:
+      - postgres_data_local:/var/lib/postgresql/data
+      - postgres_backup_local:/backups
+    environment:
+      - POSTGRES_DB=django_miny_tiny_url
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
